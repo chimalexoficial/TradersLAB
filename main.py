@@ -11,16 +11,24 @@ df = pd.read_csv('data.csv')
 app.layout = html.Div([html.H1('Hello Dash!!'),
                        html.Div('ITESO 2020')])
 
-closeDate = df.columns.str.replace('Close Date', '')
+columnsArray = list(df.columns.values)
+print(columnsArray)
+
 
 fig = go.Figure(data=[go.Table(
-    header=dict(values=list(df.columns),
+    header=dict(values=[columnsArray[0], columnsArray[1], columnsArray[2], columnsArray[3]],
                 fill_color='paleturquoise',
                 align='left'),
-    cells=dict(values=[df.CloseDate, df.Symbol, df.Action, df.Population],
+    cells=dict(values=[df[columnsArray[0]], df[columnsArray[1]], df[columnsArray[2]], df[columnsArray[3]]],
                fill_color='lavender',
                align='left'))
 ])
+
+fig.show()
+
+#pie chart
+figPie = px.pie(df, values='Count', names='Symbol')
+figPie.show()
 
 
 

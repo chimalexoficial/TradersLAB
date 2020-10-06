@@ -30,6 +30,20 @@ fig.show()
 figPie = px.pie(df, values='Count', names='Symbol')
 figPie.show()
 
+#GRAFICA DE RENDIMIENTO ANUAL VS OTROS INSTRUMENTOS
+#FORMULA TCAC = ((Valor final / Valor inicial) ^ (1 / Número de años)) – 1
+x = ['Trader', 'Banco', 'CETES']
+y = [20, 14, 23]
+
+# Use textposition='auto' for direct text
+fig = go.Figure(data=[go.Bar(
+            x=x, y=y,
+            text=y,
+            textposition='auto',
+        )])
+
+fig.show()
+
 
 
 #web server
